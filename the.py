@@ -12,7 +12,7 @@ from git import Repo
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='.', intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
 token_file = open('token.txt', 'r')
 token = token_file.read()
 
@@ -74,38 +74,43 @@ async def takehelp(ctx, member : discord.Member):
         thing = [member.mention, ' can no longer access the help channels.']
         x = ''.join(thing)
         await ctx.send(x)
+        print("I took help from", member.mention,".")
 
 @bot.command(help="Displays information about the bot.", )
 async def about(ctx):
-    await ctx.send('Joe Bot Version v6.2')
+    await ctx.send('Joe Bot Version j6.1 testing')
     await ctx.send('--------------------------------')
     await ctx.send('This is a JOE Bot, all hail Joe!')
     await ctx.send('Contributors: JoshuaMV')
-    await ctx.send('test3')
+    await ctx.send('--------------------------------')
+    await ctx.send('This bot is a fork of Joe Bot for testing.')
+    await ctx.send('All birbs birbserved.')
+    print("User called the about message.")
 
-@bot.command(help="idk", pass_context=True)
-async def furry(ctx):
-    area = ctx.message.channel
-    await ctx.send(file=discord.File(r'/Users/Evanz/real.png'))
-
-@bot.command(help="Sends a random image from Evan's furry folder.")
+@bot.command(help="Sends a random image from the furry folder.")
 async def furryfolder(ctx):
     furryfile = random.choice(os.listdir("/FURRY"))
     furrytable = ["/FURRY/",furryfile]
     furrysend = ''.join(furrytable)
     await ctx.send(file=discord.File(furrysend))
-	
+    print("I sent", furrysend, "from the /FURRY directory.")
+
+# The command below requires the string library.
+
 @bot.command(help="Sends a random LightShot image. (Use at your own risk!)")
 async def lightshot(ctx):
     lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
     lstable = ["https://prnt.sc/", lslink]
     lssend = ''.join(lstable)
     await ctx.send(lssend)
+    print("User generated this link from LightShot:", lssend)
+
 
 @bot.command(help="Make the Joe Bot say what you want it to!")
 async def say(ctx, *args):
     arguments = ' '.join(args)
     await ctx.send(arguments)
+    print("I said '",arguments,"'.")
 
 @bot.command(help="Birb image.")
 async def birb(ctx):
@@ -113,11 +118,13 @@ async def birb(ctx):
 
 @bot.command(help='Update the bot via GIT.')
 async def update(ctx):
-	os.system("rm -rf /root/test/")
-	os.system("mkdir /root/test/")
-	Repo.clone_from("https://www.github.com/Evanzap/joebot.git", "/root/test/")
-	os.system("mv /root/test/the.py /root/the.py")
-	await ctx.send('Updating software, please type .update after a few seconds.')
+    print("User attempted to update bot.")
+    await ctx.send('Software updates are not available in your region. (000-0001)')
+#	os.system("rm -rf /root/test/")
+#	os.system("mkdir /root/test/")
+#	Repo.clone_from("https://www.github.com/Evanzap/joebot.git", "/root/test/")
+#	os.system("mv /root/test/the.py /root/the.py")
+#	await ctx.send('Updating software, please type .update after a few seconds.')
 	
 @bot.command(help='Restart the bot after updating')
 async def restart(ctx):
