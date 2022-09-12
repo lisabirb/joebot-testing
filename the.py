@@ -7,6 +7,7 @@ import psutil
 import logging
 import time
 import string
+import subprocess
 import git
 from git import Repo
 
@@ -78,7 +79,7 @@ async def takehelp(ctx, member : discord.Member):
 
 @bot.command(help="Displays information about the bot.", )
 async def about(ctx):
-    await ctx.send('Joe Bot Version j6.1 testing')
+    await ctx.send('Joe Bot Version j6.1.1 testing')
     await ctx.send('--------------------------------')
     await ctx.send('This is a JOE Bot, all hail Joe!')
     await ctx.send('Contributors: JoshuaMV')
@@ -94,6 +95,33 @@ async def furryfolder(ctx):
     furrysend = ''.join(furrytable)
     await ctx.send(file=discord.File(furrysend))
     print("I sent", furrysend, "from the /FURRY directory.")
+
+@bot.command(help="Sends a chosen image from the furry folder.")
+async def pickfurry(ctx, *args):
+    furryfile = ''.join(args)
+    furrytable = ["/FURRY/",furryfile]
+    furrysend = ''.join(furrytable)
+    await ctx.send(file=discord.File(furrysend))
+    print("I sent", furrysend, "from the /FURRY directory.")
+
+@bot.command(help="Downloads an image to the furry folder.")
+async def wget(ctx, *args):
+    arguments=' '.join(args)
+    print("User is downloading",arguments,"to /FURRY.")
+    await ctx.send("Downloading to the furry folder.")
+    wgettable = ["wget --directory-prefix /FURRY"," ",arguments]
+    os.system(''.join(wgettable))
+    print("User downloaded",arguments,"to /FURRY.")
+    await ctx.send("Finished downloading to the furry folder.")
+
+# The command below requires the subprocess library.
+
+@bot.command(help="Lists the contents of the furry folder.")
+async def ls(ctx):
+    print("User is requesting the contents of the furry folder.")
+    #lsoutput = ['```',subprocess.check_output(['ls','/FURRY']),'```']
+    lsoutput = "```",subprocess.run(['ls', '/FURRY'], stdout=subprocess.PIPE).stdout.decode('utf-8'),"```"
+    await ctx.send(lsoutput)
 
 # The command below requires the string library.
 
