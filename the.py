@@ -79,7 +79,7 @@ async def takehelp(ctx, member : discord.Member):
 
 @bot.command(help="Displays information about the bot.", )
 async def about(ctx):
-    await ctx.send('Joe Bot Version j6.1.1 testing')
+    await ctx.send('Joe Bot Version rolling-testing')
     await ctx.send('--------------------------------')
     await ctx.send('This is a JOE Bot, all hail Joe!')
     await ctx.send('Contributors: JoshuaMV')
@@ -107,6 +107,14 @@ async def pickfurry(ctx, *args):
 @bot.command(help="Downloads an image to the furry folder.")
 async def wget(ctx, *args):
     arguments=' '.join(args)
+    if "$" in arguments:
+        print("! User tried to download file from URL with illegal characters.")
+        await ctx.send("This URL contains characters you cannot use!")
+        return
+    if ".." in arguments:
+        print("! User tried to download file from URL with illegal characters.")
+        await ctx.send("This URL contains characters you cannot use!")
+        return
     print("User is downloading",arguments,"to /FURRY.")
     await ctx.send("Downloading to the furry folder.")
     wgettable = ["wget --directory-prefix /FURRY"," ",arguments]
@@ -114,14 +122,36 @@ async def wget(ctx, *args):
     print("User downloaded",arguments,"to /FURRY.")
     await ctx.send("Finished downloading to the furry folder.")
 
-# The command below requires the subprocess library.
-
 @bot.command(help="Lists the contents of the furry folder.")
 async def ls(ctx):
     print("User is requesting the contents of the furry folder.")
-    #lsoutput = ['```',subprocess.check_output(['ls','/FURRY']),'```']
-    lsoutput = "```",subprocess.run(['ls', '/FURRY'], stdout=subprocess.PIPE).stdout.decode('utf-8'),"```"
-    await ctx.send(lsoutput)
+    await ctx.send(''.join(["Furry Directory Listing: ( ",' )( '.join(os.listdir('/FURRY'))," )"]))
+
+@bot.command(help="Renames a file in the furry folder.")
+async def rename(ctx, arg1, arg2):
+    source = ''.join(arg1)
+    destination = ''.join(arg2)
+    if "$" in source:
+        print("! User tried to rename file with illegal characters.")
+        await ctx.send("This original filename contains characters you cannot use!")
+        return
+    if "$" in destination:
+        print("! User tried to rename file to name with illegal characters.")
+        await ctx.send("This destination filename contains characters you cannot use!")
+        return
+    if ".." in destination:
+        print("! User tried to rename file to name with illegal characters.")
+        await ctx.send("This destination filename contains characters you cannot use!")
+        return
+    if ".." in source:
+        print("! User tried to rename file with illegal characters.")
+        await ctx.send("This original filename contains characters you cannot use!")
+        return
+    print("User is renaming",source,"to", destination,".")
+    await ctx.send("Renaming file.")
+    renametable = ["mv ","/FURRY/",source," ","/FURRY/",destination]
+    os.system(''.join(renametable))
+    await ctx.send("File renamed.")
 
 # The command below requires the string library.
 
