@@ -90,19 +90,19 @@ async def about(ctx):
 
 @bot.command(help="Sends a random image from the furry folder.")
 async def furryfolder(ctx):
-    furryfile = random.choice(os.listdir("/FURRY"))
-    furrytable = ["/FURRY/",furryfile]
+    furryfile = random.choice(os.listdir("./FURRY"))
+    furrytable = ["./FURRY/",furryfile]
     furrysend = ''.join(furrytable)
     await ctx.send(file=discord.File(furrysend))
-    print("I sent", furrysend, "from the /FURRY directory.")
+    print("I sent", furrysend, "from the ./FURRY directory.")
 
 @bot.command(help="Sends a chosen image from the furry folder.")
 async def pickfurry(ctx, *args):
     furryfile = ''.join(args)
-    furrytable = ["/FURRY/",furryfile]
+    furrytable = ["./FURRY/",furryfile]
     furrysend = ''.join(furrytable)
     await ctx.send(file=discord.File(furrysend))
-    print("I sent", furrysend, "from the /FURRY directory.")
+    print("I sent", furrysend, "from the ./FURRY directory.")
 
 @bot.command(help="Downloads an image to the furry folder.")
 async def wget(ctx, *args):
@@ -115,17 +115,17 @@ async def wget(ctx, *args):
         print("! User tried to download file from URL with illegal characters.")
         await ctx.send("This URL contains characters you cannot use!")
         return
-    print("User is downloading",arguments,"to /FURRY.")
+    print("User is downloading",arguments,"to ./FURRY.")
     await ctx.send("Downloading to the furry folder.")
-    wgettable = ["wget --directory-prefix /FURRY"," ",arguments]
+    wgettable = ["wget --directory-prefix ./FURRY"," ",arguments]
     os.system(''.join(wgettable))
-    print("User downloaded",arguments,"to /FURRY.")
+    print("User downloaded",arguments,"to ./FURRY.")
     await ctx.send("Finished downloading to the furry folder.")
 
 @bot.command(help="Lists the contents of the furry folder.")
 async def ls(ctx):
     print("User is requesting the contents of the furry folder.")
-    await ctx.send(''.join(["Furry Directory Listing: ( ",' )( '.join(os.listdir('/FURRY'))," )"]))
+    await ctx.send(''.join(["Furry Directory Listing: ( ",' )( '.join(os.listdir('./FURRY'))," )"]))
 
 @bot.command(help="Renames a file in the furry folder.")
 async def rename(ctx, arg1, arg2):
@@ -149,7 +149,7 @@ async def rename(ctx, arg1, arg2):
         return
     print("User is renaming",source,"to", destination,".")
     await ctx.send("Renaming file.")
-    renametable = ["mv ","/FURRY/",source," ","/FURRY/",destination]
+    renametable = ["mv ","./FURRY/",source," ","./FURRY/",destination]
     os.system(''.join(renametable))
     await ctx.send("File renamed.")
 
@@ -176,13 +176,12 @@ async def birb(ctx):
 
 @bot.command(help='Update the bot via GIT.')
 async def update(ctx):
-    print("User attempted to update bot.")
-    await ctx.send('Software updates are not available in your region. (000-0001)')
-#	os.system("rm -rf /root/test/")
-#	os.system("mkdir /root/test/")
-#	Repo.clone_from("https://www.github.com/Evanzap/joebot.git", "/root/test/")
-#	os.system("mv /root/test/the.py /root/the.py")
-#	await ctx.send('Updating software, please type .update after a few seconds.')
+    print("User is going to update bot.")
+    os.system("rm -rf ./update")
+    os.system("mkdir ./update")
+    Repo.clone_from("https://www.github.com/joshuavanderbilt/joebot-testing.git", "./update")
+    os.system("mv ./update/the.py ./the.py")
+    await ctx.send('Updating software, please type .restart after a few seconds.')
 	
 @bot.command(help='Restart the bot after updating')
 async def restart(ctx):
