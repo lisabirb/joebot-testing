@@ -79,14 +79,17 @@ async def takehelp(ctx, member : discord.Member):
 
 @bot.command(help="Displays information about the bot.", )
 async def about(ctx):
-    await ctx.send('Joe Bot Version rolling-testing')
-    await ctx.send('--------------------------------')
-    await ctx.send('This is a JOE Bot, all hail Joe!')
-    await ctx.send('Contributors: JoshuaMV')
-    await ctx.send('--------------------------------')
-    await ctx.send('This bot is a fork of Joe Bot for testing.')
-    await ctx.send('All birbs birbserved.')
-    await ctx.send('This line is the first part of a test to see if !update works.')
+    embed=discord.Embed(title="Joe Bot Testing",url="https://github.com/joshuavanderbilt/joebot-testing",description="This is a JOE bot, all hail Joe! Contributers: JoshuaMV.",color=0xFF5733)
+    await ctx.send(embed=embed)
+
+#    await ctx.send('Joe Bot Version rolling-testing')
+#    await ctx.send('--------------------------------')
+#    await ctx.send('This is a JOE Bot, all hail Joe!')
+#    await ctx.send('Contributors: JoshuaMV')
+#    await ctx.send('--------------------------------')
+#    await ctx.send('This bot is a fork of Joe Bot for testing.')
+#    await ctx.send('All birbs birbserved.')
+#    await ctx.send('This line is the first part of a test to see if !update works.')
     print("User called the about message.")
 
 @bot.command(help="Sends a random image from the furry folder.")
