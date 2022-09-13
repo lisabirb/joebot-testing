@@ -52,6 +52,17 @@ async def ban(ctx, member : discord.Member):
         x = ''.join(thing)
         await ctx.send(x)
 
+@bot.command(help="Warns a member.")
+async def warn(ctx, member : discord.Member, arg2):
+    reasoning = ''.join(arg2)
+    if member.name == 'Joe Bot':
+        await ctx.send('no')
+    else:
+        thing = [':warning: ', member.mention, 'was warned for: ', reasoning]
+        x = ''.join(thing)
+        await ctx.send(x)
+        print(member.mention," got warned for ",reasoning)
+
 @bot.command(help="Kills a member.")
 async def kill(ctx, member : discord.Member):
     if member.name == 'Joe Bot':
