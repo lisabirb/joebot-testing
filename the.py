@@ -86,6 +86,7 @@ async def about(ctx):
     await ctx.send('--------------------------------')
     await ctx.send('This bot is a fork of Joe Bot for testing.')
     await ctx.send('All birbs birbserved.')
+    await ctx.send('This line is the first part of a test to see if !update works.')
     print("User called the about message.")
 
 @bot.command(help="Sends a random image from the furry folder.")
@@ -181,7 +182,7 @@ async def update(ctx):
     os.system("mkdir ./update")
     Repo.clone_from("https://www.github.com/joshuavanderbilt/joebot-testing.git", "./update")
     os.system("mv ./update/the.py ./the.py")
-    await ctx.send('Updating software, please type .restart after a few seconds.')
+    await ctx.send('Updating software, please type !restart after a few seconds.')
 	
 @bot.command(help='Restart the bot after updating')
 async def restart(ctx):
