@@ -50,6 +50,8 @@ async def ban(ctx, member : discord.Member):
         await ctx.send('ERROR: Malfunction 54.')
         time.sleep(3)
         thing = [':hammer: ', ctx, ' has been banned.']
+        x = ''.join(thing)
+        await ctx.send(x)
     else:
         thing = [':hammer: ', member.mention, ' has been banned.']
         x = ''.join(thing)
