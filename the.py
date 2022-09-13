@@ -53,7 +53,7 @@ async def ban(ctx, member : discord.Member):
         await ctx.send(x)
 
 @bot.command(help="Warns a member.")
-async def warn(ctx, member : discord.Member, arg2):
+async def warn(ctx, member : discord.Member, *, arg2):
     reasoning = ''.join(arg2)
     if member.name == 'Joe Bot':
         await ctx.send('no')
