@@ -194,10 +194,13 @@ async def update(ctx):
     os.system("mkdir ./update")
     Repo.clone_from("https://www.github.com/joshuavanderbilt/joebot-testing.git", "./update")
     os.system("mv ./update/the.py ./the.py")
-    await ctx.send('Update complete, please type !restart after a few seconds.')
+    await ctx.send('Update complete.')
     print("...which succeeded!")
+    print("Let's restart the bot now.")
+    await ctx.send('Restarting...')
+    restartApp()
 	
-@bot.command(help='Restart the bot after updating')
+@bot.command(help='Restart the bot.')
 async def restart(ctx):
     print("The bot is restarting!")
     await ctx.send('Restarting...')
