@@ -197,7 +197,9 @@ async def update(ctx):
 	
 @bot.command(help='Restart the bot after updating')
 async def restart(ctx):
-	ctx.send('Restarting...')
-	restartApp()
+    print("The bot is restarting!")
+    ctx.send('Restarting...')
+    time.sleep(1)
+    restartApp()
 
 bot.run(str(token))
