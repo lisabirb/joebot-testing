@@ -14,7 +14,7 @@ from git import Repo
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix='>', intents=intents)
 token_file = open('token.txt', 'r')
 token = token_file.read()
 
