@@ -170,6 +170,13 @@ async def rename(ctx, arg1, arg2):
 @bot.command(help="Sends a random LightShot image. (Use at your own risk!)")
 async def lightshot(ctx, *args):
     arguments = ''.join(args)
+    if arguments == '':
+        lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
+        lstable = ["https://prnt.sc/", lslink]
+        lssend = ''.join(lstable)
+        await ctx.send(lssend)
+        print("User generated this link from LightShot:", lssend)
+        return
     number = int(arguments)
     for number in range(0,number):
         lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
