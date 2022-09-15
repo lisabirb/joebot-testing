@@ -168,12 +168,15 @@ async def rename(ctx, arg1, arg2):
 # The command below requires the string library.
 
 @bot.command(help="Sends a random LightShot image. (Use at your own risk!)")
-async def lightshot(ctx):
-    lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
-    lstable = ["https://prnt.sc/", lslink]
-    lssend = ''.join(lstable)
-    await ctx.send(lssend)
-    print("User generated this link from LightShot:", lssend)
+async def lightshot(ctx, *args):
+    arguments = ''.join(args)
+    number = int(arguments)
+    for number in range(0,30):
+        lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
+        lstable = ["https://prnt.sc/", lslink]
+        lssend = ''.join(lstable)
+        await ctx.send(lssend)
+        print("User generated this link from LightShot:", lssend)
 
 
 @bot.command(help="Make the Joe Bot say what you want it to!")
