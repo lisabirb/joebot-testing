@@ -171,7 +171,7 @@ async def rename(ctx, arg1, arg2):
 async def lightshot(ctx, *args):
     arguments = ''.join(args)
     number = int(arguments)
-    for number in range(0,30):
+    for number in range(0,number):
         print(number)
 #        lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
 #        lstable = ["https://prnt.sc/", lslink]
