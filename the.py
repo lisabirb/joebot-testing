@@ -86,6 +86,9 @@ async def superban(ctx, member : discord.Member):
         x = ''.join(thing)
         await ctx.send(x)
 
+# Alias
+sban = superban
+
 @bot.command(help="Takes away help from a member.")
 async def takehelp(ctx, member : discord.Member):
         thing = [member.mention, ' can no longer access the help channels.']
