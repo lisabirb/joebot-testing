@@ -182,6 +182,8 @@ async def lightshot(ctx, *args):
         lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
         lstable = ["https://prnt.sc/", lslink]
         lssend = ''.join(lstable)
+        if number > 10:
+            time.sleep(1)
         await ctx.send(lssend)
         print("User generated this link from LightShot:", lssend)
 
