@@ -178,11 +178,12 @@ async def lightshot(ctx, *args):
         print("User generated this link from LightShot:", lssend)
         return
     number = int(arguments)
+    amount = int(arguments)
     for number in range(0,number):
         lslink = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
         lstable = ["https://prnt.sc/", lslink]
         lssend = ''.join(lstable)
-        if number > 10:
+        if amount > 5:
             time.sleep(1)
         await ctx.send(lssend)
         print("User generated this link from LightShot:", lssend)
