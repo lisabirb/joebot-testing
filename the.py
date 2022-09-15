@@ -186,7 +186,7 @@ async def lightshot(ctx, *args):
         if amount > 5:
             time.sleep(1)
         await ctx.send(lssend)
-        print("User generated this link from LightShot:", lssend)
+        print("User generated this link from LightShot:", lssend,", which is", number, "out of", amount)
 
 
 @bot.command(help="Make the Joe Bot say what you want it to!")
