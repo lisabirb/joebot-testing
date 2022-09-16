@@ -227,7 +227,7 @@ async def habirb(ctx):
     await ctx.send('haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg')
 
 @bot.command(help='help me')
-async def habirb3(ctx):
+async def habirb3(ctx, user: discord.Member):
     role = discord.utils.find(lambda r: r.name == 'Joe Bot Sysadmin', ctx.message.guild.roles)
     if role not in user.roles:
         print("User tried running an admin-locked command without Joe Bot Sysadmin role.")
