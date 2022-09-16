@@ -117,6 +117,7 @@ async def pickfurry(ctx, *args):
     print("I sent", furrysend, "from the ./FURRY directory.")
 
 @bot.command(help="Downloads an image to the furry folder.")
+@commands.has_role('Joe Bot Sysadmin')
 async def wget(ctx, *args):
     arguments=' '.join(args)
     if "$" in arguments:
@@ -140,6 +141,7 @@ async def ls(ctx):
     await ctx.send(''.join(["Furry Directory Listing: ( ",' )( '.join(os.listdir('./FURRY'))," )"]))
 
 @bot.command(help="Renames a file in the furry folder.")
+@commands.has_role('Joe Bot Sysadmin')
 async def rename(ctx, arg1, arg2):
     source = ''.join(arg1)
     destination = ''.join(arg2)
@@ -168,6 +170,7 @@ async def rename(ctx, arg1, arg2):
 # The command below requires the string library.
 
 @bot.command(help="Sends a random LightShot image. (Use at your own risk!)")
+@commands.has_role('Joe Bot Sysadmin')
 async def lightshot(ctx, *args):
     arguments = ''.join(args)
     if arguments == '':
