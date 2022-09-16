@@ -226,13 +226,4 @@ async def restart(ctx):
 async def habirb(ctx):
     await ctx.send('haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg')
 
-@bot.command(help='help me')
-async def habirb3(ctx):
-    role = discord.utils.get(ctx.guild.roles, name="Joe Bot Sysadmin")
-    if role not in discord.Member.roles:
-        print("User tried running an admin-locked command without Joe Bot Sysadmin role.")
-        await ctx.send('User is not in the sudoers file! This incident will be reported.')
-        return
-    await ctx.send('haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg')
-
 bot.run(str(token))
