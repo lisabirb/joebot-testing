@@ -228,7 +228,7 @@ async def habirb(ctx):
 
 @bot.command(help='also temp test cmd')
 async def habirb2(ctx):
-    if commands.has_role('Joe Bot Sysadmin'):
+    if commands.has_role('Joe Bot Sysadmin') == true:
         await ctx.send('role detected')
     else:
         print('friggin die')
