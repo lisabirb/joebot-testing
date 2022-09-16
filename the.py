@@ -228,7 +228,7 @@ async def habirb(ctx):
 
 @bot.command(help='help me')
 async def habirb3(ctx, user: discord.Member):
-    role = discord.utils.find(lambda r: r.name == 'Joe Bot Sysadmin', ctx.message.guild.roles)
+    role = discord.utils.get(ctx.guild.roles, name="Joe Bot Sysadmin")
     if role not in user.roles:
         print("User tried running an admin-locked command without Joe Bot Sysadmin role.")
         await ctx.send('User is not in the sudoers file! This incident will be reported.')
