@@ -226,12 +226,4 @@ async def restart(ctx):
 async def habirb(ctx):
     await ctx.send('haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg')
 
-@bot.command(help='also temp test cmd')
-async def habirb2(ctx):
-    print commands.has_role('Joe Bot Sysadmin')
-    if commands.has_role('Joe Bot Sysadmin') == 1:
-        await ctx.send('role detected')
-    else:
-        print('friggin die')
-
 bot.run(str(token))
