@@ -200,6 +200,7 @@ async def birb(ctx):
     await ctx.send('https://files.catbox.moe/s1g67r.png')
 
 @bot.command(help='Update the bot via GIT.')
+@commands.has_role('Joe Bot Sysadmin')
 async def update(ctx):
     print("User is going to update bot.")
     await ctx.send('Updating software...')
@@ -214,6 +215,7 @@ async def update(ctx):
     restartApp()
 	
 @bot.command(help='Restart the bot.')
+@commands.has_role('Joe Bot Sysadmin')
 async def restart(ctx):
     print("The bot is restarting!")
     await ctx.send('Restarting...')
@@ -223,5 +225,12 @@ async def restart(ctx):
 @commands.has_role('Joe Bot Sysadmin')
 async def habirb(ctx):
     await ctx.send('haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg')
+
+@bot.command(help='also temp test cmd')
+async def habirb2(ctx):
+    if commands.has_role('Joe Bot Sysadmin'):
+        await ctx.send('role detected')
+    else:
+        print('friggin die')
 
 bot.run(str(token))
