@@ -221,7 +221,7 @@ async def restart(ctx):
 
 @bot.command(help='Temporary Test Command')
 @commands.has_role(role='Joe Bot Sysadmin')
-async def hahabirbgobrrrrrr(ctx):
+async def habirb(ctx):
     print("haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg")
 
 bot.run(str(token))
