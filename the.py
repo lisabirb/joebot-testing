@@ -220,8 +220,8 @@ async def restart(ctx):
     restartApp()
 
 @bot.command(help='Temporary Test Command')
-@commands.has_role(role='Joe Bot Sysadmin')
+@commands.has_role('Joe Bot Sysadmin')
 async def habirb(ctx):
-    print("haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg")
+    await ctx.send('haha birb go brrrrrrrrrrr https://www.birdnote.org/sites/default/files/tufted-tithouse-kristi-decourcy-resize.jpg')
 
 bot.run(str(token))
