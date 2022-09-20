@@ -177,7 +177,7 @@ async def ls(ctx):
     await ctx.send(''.join(["Furry Directory Listing: ( ",' )( '.join(os.listdir('./FURRY'))," )"]))
 
 @bot.command(help="Lists the contents of the meme folder.")
-async def ls(ctx):
+async def mls(ctx):
     print("User is requesting the contents of the meme folder.")
     await ctx.send(''.join(["Meme Directory Listing: ( ",' )( '.join(os.listdir('./MEME'))," )"]))
 
@@ -214,7 +214,7 @@ async def rename(ctx, arg1, arg2):
 
 @bot.command(help="Renames a file in the meme folder.")
 @commands.has_role('Joe Bot Sysadmin')
-async def rename(ctx, arg1, arg2):
+async def renamememe(ctx, arg1, arg2):
     source = ''.join(arg1)
     destination = ''.join(arg2)
     if "$" in source:
