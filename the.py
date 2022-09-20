@@ -108,6 +108,15 @@ async def furryfolder(ctx):
     await ctx.send(file=discord.File(furrysend))
     print("I sent", furrysend, "from the ./FURRY directory.")
 
+@bot.command(help="Sends a random image from the meme folder.")
+async def memefolder(ctx):
+    memefile = random.choice(os.listdir("./MEME"))
+    memetable = ["./MEME/",memefile]
+    memesend = ''.join(memetable)
+    await ctx.send(file=discord.File(memesend))
+    print("I send", memesend, "from the ./MEME directory.")
+    
+
 @bot.command(help="Sends a chosen image from the furry folder.")
 async def pickfurry(ctx, *args):
     furryfile = ''.join(args)
@@ -115,6 +124,14 @@ async def pickfurry(ctx, *args):
     furrysend = ''.join(furrytable)
     await ctx.send(file=discord.File(furrysend))
     print("I sent", furrysend, "from the ./FURRY directory.")
+
+@bot.command(help="Sends a chosen image from the meme folder.")
+async def pickmeme(ctx, *args):
+    memefile = ''.join(args)
+    memetable = ["./MEME/",memefile]
+    memesend = ''.join(memetable)
+    await ctx.send(file=discord.File(memesend))
+    print("I send", memesend, "from the ./MEME directory.")
 
 @bot.command(help="Downloads an image to the furry folder.")
 @commands.has_role('Joe Bot Sysadmin')
@@ -135,10 +152,38 @@ async def wget(ctx, *args):
     print("User downloaded",arguments,"to ./FURRY.")
     await ctx.send("Finished downloading to the furry folder.")
 
+@bot.command(help="Downloads an image to the meme folder.")
+@commands.has_role('Joe Bot Sysadmin')
+async def mget(ctx, *args):
+    arguments=' '.join(args)
+    if "$" in arguments:
+        print("! User tried to download file from URL with illegal characters.")
+        await ctx.send("This URL contains characters you cannot use!")
+        return
+    if ".." in arguments:
+        print("! User tried to download file from URL with illegal characters.")
+        await ctx.send("This URL contains characters you cannot use!")
+        return
+    print("User is downloading",arguments,"to ./MEME.")
+    await ctx.send("Downloading to the meme folder.")
+    wgettable = ["wget --directory-prefix ./MEME"," ",arguments]
+    os.system(''.join(wgettable))
+    print("User downloaded",arguments,"to ./MEME.")
+    await ctx.send("Finished downloading to the meme folder.")
+
 @bot.command(help="Lists the contents of the furry folder.")
 async def ls(ctx):
     print("User is requesting the contents of the furry folder.")
     await ctx.send(''.join(["Furry Directory Listing: ( ",' )( '.join(os.listdir('./FURRY'))," )"]))
+
+@bot.command(help="Lists the contents of the meme folder.")
+async def ls(ctx):
+    print("User is requesting the contents of the meme folder.")
+    await ctx.send(''.join(["Meme Directory Listing: ( ",' )( '.join(os.listdir('./MEME'))," )"]))
+
+@bot.command(help="Makes the meme folder.")
+async def mkdirmeme(ctx):
+    os.system("mkdir ./MEME")
 
 @bot.command(help="Renames a file in the furry folder.")
 @commands.has_role('Joe Bot Sysadmin')
@@ -164,6 +209,33 @@ async def rename(ctx, arg1, arg2):
     print("User is renaming",source,"to", destination,".")
     await ctx.send("Renaming file.")
     renametable = ["mv ","./FURRY/",source," ","./FURRY/",destination]
+    os.system(''.join(renametable))
+    await ctx.send("File renamed.")
+
+@bot.command(help="Renames a file in the meme folder.")
+@commands.has_role('Joe Bot Sysadmin')
+async def rename(ctx, arg1, arg2):
+    source = ''.join(arg1)
+    destination = ''.join(arg2)
+    if "$" in source:
+        print("! User tried to rename file with illegal characters.")
+        await ctx.send("This original filename contains characters you cannot use!")
+        return
+    if "$" in destination:
+        print("! User tried to rename file to name with illegal characters.")
+        await ctx.send("This destination filename contains characters you cannot use!")
+        return
+    if ".." in destination:
+        print("! User tried to rename file to name with illegal characters.")
+        await ctx.send("This destination filename contains characters you cannot use!")
+        return
+    if ".." in source:
+        print("! User tried to rename file with illegal characters.")
+        await ctx.send("This original filename contains characters you cannot use!")
+        return
+    print("User is renaming",source,"to", destination,".")
+    await ctx.send("Renaming file.")
+    renametable = ["mv ","./MEME/",source," ","./MEME/",destination]
     os.system(''.join(renametable))
     await ctx.send("File renamed.")
 
