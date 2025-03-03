@@ -1,5 +1,5 @@
 # 🍔 joebot-testing
-Fork of a fun little discord bot Evan made.
+Fork of a fun little discord bot Sky made.
 
 This version of Joe Bot is for Joshua's testing and should not be used in place of Joe Bot.
 
